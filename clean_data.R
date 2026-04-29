@@ -113,7 +113,77 @@ clean <- function(df) {
   })
 }
 
-train <- read.csv("train.csv") |>
+na_map <- function(df, cols, output = list()) {
+  # Return a list of models to fill NA values with
+  sapply(
+    cols,
+    function(col) {
+      sub("[0-9]", "", col) |>
+        grep(colnames(df)) |>
+        (\(.) df[.])() |>
+        lm(
+          paste0(col, " ~ .") |> as.formula(),
+          data = _
+        )
+    },
+    simplify = FALSE
+  )
+}
+
+apply_na_map <- function(df, map) {
+  row_func <- function(row, col) {
+    ifelse(
+      is.na(row[col]),
+      tryCatch(
+        predict(
+          map[[col]],
+          newdata = row |> t() |> as.data.frame()
+        )[[1]],
+        error = function(e) {
+          df[!is.na(df[[col]]), col] |>
+            mean()
+      }),
+      row[col]
+    )
+  }
+  col_func <- function(col) {
+    apply(
+      df,
+      1,
+      row_func,
+      col = col
+    ) |>
+      (\(.) {
+         rownames(.) <- NULL
+         .
+      })() |>
+      as.double()
+  }
+  df[names(map)] <- names(map) |>
+    sapply(col_func) |>
+    as.data.frame()
+  df
+}
+
+train_raw <- read.csv("train.csv") |>
   clean()
-test <- read.csv("test.csv") |>
+test_raw <- read.csv("test.csv") |>
   clean()
+
+map <- rbind(train_raw, within(test_raw, Response <- NA)) |>
+  (\(df) {
+     na_map(
+       df,
+       colnames(train_raw) |>
+         sapply(\(.) df[[.]] |> is.na() |> sum()) |>
+         (\(.) .[. > 0])() |>
+         (\(.) .[order(.) |> rev()])() |>
+         names()
+     )
+  })()
+
+train <- apply_na_map(train_raw, map)
+test <- apply_na_map(test_raw, map)
+
+# Clean up
+rm(train_raw, test_raw, map, na_map, apply_na_map)
