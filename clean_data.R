@@ -60,56 +60,43 @@ clean <- function(df) {
     Medical_History_39 <- as.factor(Medical_History_39)
     Medical_History_40 <- as.factor(Medical_History_40)
     Medical_History_41 <- as.factor(Medical_History_41)
-    Medical_Keyword_1 <- as.factor(Medical_Keyword_1)
-    Medical_Keyword_2 <- as.factor(Medical_Keyword_2)
-    Medical_Keyword_3 <- as.factor(Medical_Keyword_3)
-    Medical_Keyword_4 <- as.factor(Medical_Keyword_4)
-    Medical_Keyword_5 <- as.factor(Medical_Keyword_5)
-    Medical_Keyword_6 <- as.factor(Medical_Keyword_6)
-    Medical_Keyword_7 <- as.factor(Medical_Keyword_7)
-    Medical_Keyword_8 <- as.factor(Medical_Keyword_8)
-    Medical_Keyword_9 <- as.factor(Medical_Keyword_9)
-    Medical_Keyword_10 <- as.factor(Medical_Keyword_10)
-    Medical_Keyword_11 <- as.factor(Medical_Keyword_11)
-    Medical_Keyword_12 <- as.factor(Medical_Keyword_12)
-    Medical_Keyword_13 <- as.factor(Medical_Keyword_13)
-    Medical_Keyword_14 <- as.factor(Medical_Keyword_14)
-    Medical_Keyword_15 <- as.factor(Medical_Keyword_15)
-    Medical_Keyword_16 <- as.factor(Medical_Keyword_16)
-    Medical_Keyword_17 <- as.factor(Medical_Keyword_17)
-    Medical_Keyword_18 <- as.factor(Medical_Keyword_18)
-    Medical_Keyword_19 <- as.factor(Medical_Keyword_19)
-    Medical_Keyword_20 <- as.factor(Medical_Keyword_20)
-    Medical_Keyword_21 <- as.factor(Medical_Keyword_21)
-    Medical_Keyword_22 <- as.factor(Medical_Keyword_22)
-    Medical_Keyword_23 <- as.factor(Medical_Keyword_23)
-    Medical_Keyword_24 <- as.factor(Medical_Keyword_24)
-    Medical_Keyword_25 <- as.factor(Medical_Keyword_25)
-    Medical_Keyword_26 <- as.factor(Medical_Keyword_26)
-    Medical_Keyword_27 <- as.factor(Medical_Keyword_27)
-    Medical_Keyword_28 <- as.factor(Medical_Keyword_28)
-    Medical_Keyword_29 <- as.factor(Medical_Keyword_29)
-    Medical_Keyword_30 <- as.factor(Medical_Keyword_30)
-    Medical_Keyword_31 <- as.factor(Medical_Keyword_31)
-    Medical_Keyword_32 <- as.factor(Medical_Keyword_32)
-    Medical_Keyword_33 <- as.factor(Medical_Keyword_33)
-    Medical_Keyword_34 <- as.factor(Medical_Keyword_34)
-    Medical_Keyword_35 <- as.factor(Medical_Keyword_35)
-    Medical_Keyword_36 <- as.factor(Medical_Keyword_36)
-    Medical_Keyword_37 <- as.factor(Medical_Keyword_37)
-    Medical_Keyword_38 <- as.factor(Medical_Keyword_38)
-    Medical_Keyword_39 <- as.factor(Medical_Keyword_39)
-    Medical_Keyword_40 <- as.factor(Medical_Keyword_40)
-    Medical_Keyword_41 <- as.factor(Medical_Keyword_41)
-    Medical_Keyword_42 <- as.factor(Medical_Keyword_42)
-    Medical_Keyword_43 <- as.factor(Medical_Keyword_43)
-    Medical_Keyword_44 <- as.factor(Medical_Keyword_44)
-    Medical_Keyword_45 <- as.factor(Medical_Keyword_45)
-    Medical_Keyword_46 <- as.factor(Medical_Keyword_46)
-    Medical_Keyword_47 <- as.factor(Medical_Keyword_47)
-    Medical_Keyword_48 <- as.factor(Medical_Keyword_48)
+    Summed_Medical_Keywords <- cbind(
+      Medical_Keyword_1, Medical_Keyword_2, Medical_Keyword_3,
+      Medical_Keyword_4, Medical_Keyword_5, Medical_Keyword_6,
+      Medical_Keyword_7, Medical_Keyword_8, Medical_Keyword_9,
+      Medical_Keyword_10, Medical_Keyword_11, Medical_Keyword_12,
+      Medical_Keyword_13, Medical_Keyword_14, Medical_Keyword_15,
+      Medical_Keyword_16, Medical_Keyword_17, Medical_Keyword_18,
+      Medical_Keyword_19, Medical_Keyword_20, Medical_Keyword_21,
+      Medical_Keyword_22, Medical_Keyword_23, Medical_Keyword_24,
+      Medical_Keyword_25, Medical_Keyword_26, Medical_Keyword_27,
+      Medical_Keyword_28, Medical_Keyword_29, Medical_Keyword_30,
+      Medical_Keyword_31, Medical_Keyword_32, Medical_Keyword_33,
+      Medical_Keyword_34, Medical_Keyword_35, Medical_Keyword_36,
+      Medical_Keyword_37, Medical_Keyword_38, Medical_Keyword_39,
+      Medical_Keyword_40, Medical_Keyword_41, Medical_Keyword_42,
+      Medical_Keyword_43, Medical_Keyword_44, Medical_Keyword_45,
+      Medical_Keyword_46, Medical_Keyword_47, Medical_Keyword_48
+    ) |>
+      apply(1, sum)
     rm(Family_Hist_3, Family_Hist_5, Medical_History_10, Medical_History_15,
        Medical_History_24, Medical_History_32)
+    rm(Medical_Keyword_1, Medical_Keyword_2, Medical_Keyword_3,
+       Medical_Keyword_4, Medical_Keyword_5, Medical_Keyword_6,
+       Medical_Keyword_7, Medical_Keyword_8, Medical_Keyword_9,
+       Medical_Keyword_10, Medical_Keyword_11, Medical_Keyword_12,
+       Medical_Keyword_13, Medical_Keyword_14, Medical_Keyword_15,
+       Medical_Keyword_16, Medical_Keyword_17, Medical_Keyword_18,
+       Medical_Keyword_19, Medical_Keyword_20, Medical_Keyword_21,
+       Medical_Keyword_22, Medical_Keyword_23, Medical_Keyword_24,
+       Medical_Keyword_25, Medical_Keyword_26, Medical_Keyword_27,
+       Medical_Keyword_28, Medical_Keyword_29, Medical_Keyword_30,
+       Medical_Keyword_31, Medical_Keyword_32, Medical_Keyword_33,
+       Medical_Keyword_34, Medical_Keyword_35, Medical_Keyword_36,
+       Medical_Keyword_37, Medical_Keyword_38, Medical_Keyword_39,
+       Medical_Keyword_40, Medical_Keyword_41, Medical_Keyword_42,
+       Medical_Keyword_43, Medical_Keyword_44, Medical_Keyword_45,
+       Medical_Keyword_46, Medical_Keyword_47, Medical_Keyword_48)
   })
 }
 
