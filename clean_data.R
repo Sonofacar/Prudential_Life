@@ -2,11 +2,11 @@ clean <- function(df) {
   within(df, {
     Product_Info_1 <- as.factor(Product_Info_1)
     Product_Info_2 <- as.factor(Product_Info_2)
-    Product_Info_3 <- as.factor(Product_Info_3)
+    #Product_Info_3 <- as.factor(Product_Info_3)
     Product_Info_5 <- as.factor(Product_Info_5)
     Product_Info_6 <- as.factor(Product_Info_6)
     Product_Info_7 <- as.factor(Product_Info_7)
-    Employment_Info_2 <- as.factor(Employment_Info_2)
+    #Employment_Info_2 <- as.factor(Employment_Info_2)
     Employment_Info_3 <- as.factor(Employment_Info_3)
     Employment_Info_5 <- as.factor(Employment_Info_5)
     InsuredInfo_1 <- as.factor(InsuredInfo_1)
@@ -24,7 +24,7 @@ clean <- function(df) {
     Insurance_History_8 <- as.factor(Insurance_History_8)
     Insurance_History_9 <- as.factor(Insurance_History_9)
     Family_Hist_1 <- as.factor(Family_Hist_1)
-    Medical_History_2 <- as.factor(Medical_History_2)
+    #Medical_History_2 <- as.factor(Medical_History_2)
     Medical_History_3 <- as.factor(Medical_History_3)
     Medical_History_4 <- as.factor(Medical_History_4)
     Medical_History_5 <- as.factor(Medical_History_5)
@@ -51,12 +51,12 @@ clean <- function(df) {
     Medical_History_29 <- as.factor(Medical_History_29)
     Medical_History_30 <- as.factor(Medical_History_30)
     Medical_History_31 <- as.factor(Medical_History_31)
-    Medical_History_33 <- as.factor(Medical_History_33)
+    #Medical_History_33 <- as.factor(Medical_History_33)
     Medical_History_34 <- as.factor(Medical_History_34)
     Medical_History_35 <- as.factor(Medical_History_35)
     Medical_History_36 <- as.factor(Medical_History_36)
     Medical_History_37 <- as.factor(Medical_History_37)
-    Medical_History_38 <- as.factor(Medical_History_38)
+    #Medical_History_38 <- as.factor(Medical_History_38)
     Medical_History_39 <- as.factor(Medical_History_39)
     Medical_History_40 <- as.factor(Medical_History_40)
     Medical_History_41 <- as.factor(Medical_History_41)
@@ -169,7 +169,8 @@ map <- rbind(train_raw, within(test_raw, Response <- NA)) |>
      )
   })()
 
-train <- apply_na_map(train_raw, map)
+train <- within(train_raw, rm(Id)) |>
+  apply_na_map(map)
 test <- apply_na_map(test_raw, map)
 
 # Clean up
